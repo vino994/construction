@@ -4,7 +4,7 @@ import "../App.css";
 function Minimalist() {
   const slides = [
     {
-      leftImage: "/assets/const2.webp",
+      leftImage: `${process.env.PUBLIC_URL}/assets/const2.webp`,
       stepBadge: "Georgio Interior",
       stepTitle: "Modern Minimalist",
       topBadge: "Aesthetic",
@@ -14,10 +14,10 @@ function Minimalist() {
       bottomBadge: "Best Furniture",
       bottomText:
         "Indulge in the artistry of everyday living. Please note that attendance is a crucial evaluation factor in your learning journey.",
-      bottomImage: "/assets/const2.webp",
+      bottomImage: `${process.env.PUBLIC_URL}/assets/const2.webp`,
     },
     {
-      leftImage: "/assets/const3.png",
+      leftImage: `${process.env.PUBLIC_URL}/assets/const3.png`,
       stepBadge: "Luxury Designs",
       stepTitle: "Classic Contemporary",
       topBadge: "Premium",
@@ -27,10 +27,10 @@ function Minimalist() {
       bottomBadge: "Elite Choice",
       bottomText:
         "Experience comfort and sophistication with our exclusive collection.",
-      bottomImage: "/assets/const3.png",
+      bottomImage: `${process.env.PUBLIC_URL}/assets/const3.png`,
     },
     {
-      leftImage: "/assets/const1.webp",
+      leftImage: `${process.env.PUBLIC_URL}/assets/const1.webp`,
       stepBadge: "Art Deco",
       stepTitle: "Urban Chic",
       topBadge: "Creative",
@@ -39,7 +39,7 @@ function Minimalist() {
       bottomBadge: "City Living",
       bottomText:
         "Transform your lifestyle with interiors tailored for modern urban spaces.",
-      bottomImage: "/assets/const1.webp",
+      bottomImage: `${process.env.PUBLIC_URL}/assets/const1.webp`,
     },
   ];
 
@@ -54,14 +54,14 @@ function Minimalist() {
       setCurrent((prev) => (prev + 1) % slides.length);
     }, 7000);
     return () => clearInterval(interval);
-  }, [slides.length]);
+  }, []);
 
   const slide = slides[current];
 
   return (
     <section className="container-fluid my-5">
       <div className="row align-items-start h-50">
-        {/* LEFT SIDE with stairs overlay */}
+        {/* LEFT SIDE */}
         <div className="col-lg-8 position-relative minimalist-left fade-slide">
           <div className="stairs-wrapper">
             <img
@@ -69,40 +69,37 @@ function Minimalist() {
               alt="Minimalist"
               className="img minimalist-img"
             />
-
             <svg
               className="stairs-shape"
               viewBox="0 0 400 400"
               preserveAspectRatio="none"
             >
               <path
-                d="
-                  M0,0 
-                  L100,0 Q110,0 110,10 L110,90 Q110,100 120,100
+                d="M0,0 L100,0 Q110,0 110,10 L110,90 Q110,100 120,100
                   L200,100 Q210,100 210,110 L210,190 Q210,200 220,200
                   L300,200 Q310,200 310,210 L310,290 Q310,300 320,300
                   L390,300 Q400,300 400,310 L400,390 Q400,400 390,400
-                  L0,400 Z
-                "
+                  L0,400 Z"
                 fill="white"
               />
             </svg>
-
             <div className="stairs-text">
-              <span className="badge glass-badge text-dark mb-2">{slide.stepBadge}</span>
+              <span className="badge glass-badge text-dark mb-2">
+                {slide.stepBadge}
+              </span>
               <h2 className="fw-bold">{slide.stepTitle}</h2>
             </div>
           </div>
         </div>
 
-        {/* RIGHT SIDE floating cards */}
+        {/* RIGHT SIDE */}
         <div className="col-lg-4 d-flex flex-column gap-3 minimalist-right">
           {/* Top card */}
           <div className="floating-card top-card shadow-sm p-3 position-relative fade-slide">
             <button className="btn-left w-50 ps-4 pe-4">
               <span className="badge text-dark mb-2">{slide.topBadge}</span>
             </button>
-            <p className="minimalist-p pe-5 mt-4 justify">{slide.topText}</p>
+            <p className="minimalist-p pe-5 mt-4 text-justify">{slide.topText}</p>
             <h6 className="fw-bold fs-1">{slide.topHeading}</h6>
             <button className="arrow-btn" onClick={handleNext}>
               ↗
@@ -137,33 +134,19 @@ function Minimalist() {
           <h2 className="fw-bold mono-title">Modern Minimalist</h2>
         </div>
 
-        <div className="col-6 col-md-3 mt-4">
-          <div className="stat-card glass-card">
-            <h4 className="fw-bold fs-1">500+</h4>
-            <p>Products</p>
+        {[
+          { number: "500+", label: "Products" },
+          { number: "20+", label: "Projects" },
+          { number: "50+", label: "Satisfied Customers" },
+          { number: "1st", label: "Top in Paris" },
+        ].map((stat, i) => (
+          <div className="col-6 col-md-3 mt-4" key={i}>
+            <div className="stat-card glass-card">
+              <h4 className="fw-bold fs-1">{stat.number}</h4>
+              <p>{stat.label}</p>
+            </div>
           </div>
-        </div>
-
-        <div className="col-6 col-md-3 mt-4">
-          <div className="stat-card glass-card">
-            <h4 className="fw-bold fs-1">20+</h4>
-            <p>Projects</p>
-          </div>
-        </div>
-
-        <div className="col-6 col-md-3 mt-4">
-          <div className="stat-card glass-card">
-            <h4 className="fw-bold fs-1">50+</h4>
-            <p>Satisfied Customers</p>
-          </div>
-        </div>
-
-        <div className="col-6 col-md-3 mt-4">
-          <div className="stat-card glass-card">
-            <h4 className="fw-bold fs-1">1st</h4>
-            <p>Top in Paris</p>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );
