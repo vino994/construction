@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/vino994/construction/static/css/main.2cfa3d8e.css",
-    "main.js": "/vino994/construction/static/js/main.41809f06.js",
-    "index.html": "/vino994/construction/index.html",
-    "main.2cfa3d8e.css.map": "/vino994/construction/static/css/main.2cfa3d8e.css.map",
-    "main.41809f06.js.map": "/vino994/construction/static/js/main.41809f06.js.map"
+    "main.css": "/construction/static/css/main.2cfa3d8e.css",
+    "main.js": "/construction/static/js/main.41809f06.js",
+    "index.html": "/construction/index.html",
+    "main.2cfa3d8e.css.map": "/construction/static/css/main.2cfa3d8e.css.map",
+    "main.41809f06.js.map": "/construction/static/js/main.41809f06.js.map"
   },
   "entrypoints": [
     "static/css/main.2cfa3d8e.css",
