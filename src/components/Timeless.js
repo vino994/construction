@@ -4,14 +4,14 @@ function Timeless() {
   return (
     <section className="container my-5">
       <div className="row align-items-center">
-        <div className="col-md-6">
-          <img
-            src="/assets/timeless.jpg"
-            alt="Timeless"
-            className="img-fluid rounded"
-          />
+        <div className="col-md-8">
+        <img
+  src={`${process.env.PUBLIC_URL}/assets/const1.webp`}
+  alt="Timeless"
+  className="img-fluid rounded"
+/>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-4">
           <span className="badge bg-light text-dark mb-2">Elegance • Timeless</span>
           <h2 className="fw-bold">Modern Style<br />Timeless Charm</h2>
           <p className="mt-3">

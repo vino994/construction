@@ -4,6 +4,8 @@ import Hero from "./components/Hero";
 import Minimalist from "./components/Minimalist";
 import Timeless from "./components/Timeless";
 import "./App.css";
+import Gallery from "./components/Gallery";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
       <Hero />
       <Minimalist />
       <Timeless />
+      <Gallery />
+      <Footer />
     </div>
   );
 }
