@@ -461,9 +461,20 @@ html {
   height: 50%;
   z-index: 2;
 }
+.nav-links li button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: inherit;
+
+}
+
 .stairs-text h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin: 0;
+  text-align: justify;
 }
 /* Image */
 .minimalist-img {
@@ -487,7 +498,8 @@ html {
 .stairs-text {
   position: absolute;
   bottom: 40px;
-  left: 30px;
+  left: 20px;
+  text-align: justify;
   z-index: 3;
   color: #111;
 }

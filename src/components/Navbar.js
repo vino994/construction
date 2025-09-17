@@ -24,6 +24,14 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+
+const handleScroll = (id) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  setIsOpen(false); // close mobile menu after click
+};
   return (
     <nav
       className={`navbar sticky-top ${scrolled ? "scrolled" : ""} ${
@@ -40,12 +48,12 @@ function Navbar() {
         </a>
 
         {/* Desktop Menu */}
-        <ul className="nav-links d-none d-lg-flex">
-          <li><a href="#product">Product</a></li>
-          <li><a href="#lifestyle">Lifestyle</a></li>
-          <li><a href="#news">News</a></li>
-          <li><a href="#projects">Projects</a></li>
-        </ul>
+      <ul className="nav-links d-none d-lg-flex">
+  <li><button onClick={() => handleScroll("product")}>Product</button></li>
+  <li><button onClick={() => handleScroll("lifestyle")}>Lifestyle</button></li>
+  <li><button onClick={() => handleScroll("news")}>News</button></li>
+  <li><button onClick={() => handleScroll("projects")}>Projects</button></li>
+</ul>
 
         {/* Mobile Toggler */}
         <button className="nav-toggle d-lg-none" onClick={toggleMenu}>
