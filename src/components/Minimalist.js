@@ -5,58 +5,58 @@ function Minimalist() {
   const slides = [
     {
       leftImage: `${process.env.PUBLIC_URL}/assets/const2.webp`,
-      stepBadge: "Georgio Interior",
-      stepTitle: "Modern Minimalist",
-      topBadge: "Aesthetic",
+      stepBadge: "Residential",
+      stepTitle: "Modern Indian Homes",
+      topBadge: "Smart Living",
       topText:
-        "Crafting spaces that harmonize modern aesthetics with timeless elegance.",
-      topHeading: "Into a gallery of elegance",
-      bottomBadge: "Best Furniture",
+        "Designing energy-efficient and vastu-compliant homes for urban India.",
+      topHeading: "Homes of Tomorrow",
+      bottomBadge: "Sustainable",
       bottomText:
-        "Indulge in the artistry of everyday living with curated pieces.",
+        "Eco-friendly materials and advanced construction practices for modern families.",
       bottomImages: [
         `${process.env.PUBLIC_URL}/assets/c2.jpg`,
         `${process.env.PUBLIC_URL}/assets/c3.jpg`,
         `${process.env.PUBLIC_URL}/assets/c1.jpg`,
         `${process.env.PUBLIC_URL}/assets/c4.jpg`,
       ],
-      price: "$499",
+      price: "₹25 Lakhs onwards",
     },
     {
       leftImage: `${process.env.PUBLIC_URL}/assets/const3.png`,
-      stepBadge: "Luxury Designs",
-      stepTitle: "Classic Contemporary",
-      topBadge: "Premium",
-      topText: "Discover the fusion of tradition and modern elegance.",
-      topHeading: "A timeless blend",
-      bottomBadge: "Elite Choice",
+      stepBadge: "Commercial",
+      stepTitle: "Corporate & Retail Spaces",
+      topBadge: "Premium Quality",
+      topText: "Delivering high-rise offices and malls with global standards.",
+      topHeading: "India’s Growth Hubs",
+      bottomBadge: "Innovation",
       bottomText:
-        "Experience comfort and sophistication with our exclusive collection.",
+        "Blending Indian culture with futuristic designs for businesses.",
       bottomImages: [
         `${process.env.PUBLIC_URL}/assets/c5.jpg`,
         `${process.env.PUBLIC_URL}/assets/c6.jpg`,
         `${process.env.PUBLIC_URL}/assets/c7.jpg`,
         `${process.env.PUBLIC_URL}/assets/c8.jpg`,
       ],
-      price: "$699",
+      price: "₹50 Lakhs onwards",
     },
     {
       leftImage: `${process.env.PUBLIC_URL}/assets/const1.webp`,
-      stepBadge: "Art Deco",
-      stepTitle: "Urban Chic",
-      topBadge: "Creative",
-      topText: "Redefining city living with chic and stylish designs.",
-      topHeading: "Vibrant & Bold",
-      bottomBadge: "City Living",
+      stepBadge: "Cultural Projects",
+      stepTitle: "Temples & Heritage",
+      topBadge: "Traditional",
+      topText: "Restoring and constructing temples with intricate artistry.",
+      topHeading: "Sacred Architecture",
+      bottomBadge: "Heritage",
       bottomText:
-        "Transform your lifestyle with interiors tailored for modern urban spaces.",
+        "Preserving India's ancient styles while using modern engineering.",
       bottomImages: [
         `${process.env.PUBLIC_URL}/assets/c9.jpg`,
         `${process.env.PUBLIC_URL}/assets/c10.jpg`,
         `${process.env.PUBLIC_URL}/assets/c11.jpg`,
         `${process.env.PUBLIC_URL}/assets/c12.jpg`,
       ],
-      price: "$899",
+      price: "Project-based pricing",
     },
   ];
 
@@ -72,7 +72,6 @@ function Minimalist() {
   const slide = slides[current];
   const bottomImage = slide.bottomImages[bottomIndex];
 
-  // Auto-change bottom images
   useEffect(() => {
     const bottomInterval = setInterval(() => {
       setFadeBottom(true);
@@ -85,7 +84,6 @@ function Minimalist() {
     return () => clearInterval(bottomInterval);
   }, [current, slide.bottomImages.length]);
 
-  // Main image change
   const handleMainChange = () => {
     setFadeMain(true);
     setTimeout(() => {
@@ -95,7 +93,6 @@ function Minimalist() {
     }, 1000);
   };
 
-  // Open popup from top/bottom badge
   const handleOpenPopup = (slideData) => {
     setPopupSlide(slideData);
     setShowPopup(true);
@@ -163,75 +160,88 @@ function Minimalist() {
             </div>
 
             {/* Bottom card */}
-          <div className="floating-card bottom-card shadow-sm p-3 position-relative">
-  <div
-    className={`bottom-bg ${fadeBottom ? "fade-out" : "fade-in"}`}
-    style={{ backgroundImage: `url(${bottomImage})` }}
-  ></div>
+            <div className="floating-card bottom-card shadow-sm p-3 position-relative">
+              <div
+                className={`bottom-bg ${fadeBottom ? "fade-out" : "fade-in"}`}
+                style={{ backgroundImage: `url(${bottomImage})` }}
+              ></div>
 
-  <div className="bottom-overlay"></div>
+              <div className="bottom-overlay"></div>
 
-  {/* ✅ Button is now clickable */}
-  <button
-    className="btn-left w-50 ps-4 pe-4 mt-4"
-    onClick={() => handleOpenPopup(slide)}
-  >
-    <span className="badge text-light mb-2">{slide.bottomBadge}</span>
-  </button>
+              <button
+                className="btn-left w-50 ps-4 pe-4 mt-4"
+                onClick={() => handleOpenPopup(slide)}
+              >
+                <span className="badge text-light mb-2">
+                  {slide.bottomBadge}
+                </span>
+              </button>
 
-  <p className="fw-bold fs-5 pe-5 w-75 bottom-text">
-    {slide.bottomText}
-  </p>
+              <p className="fw-bold fs-5 pe-5 w-75 bottom-text">
+                {slide.bottomText}
+              </p>
 
-  <div className="arrow-btn1">
-    <button onClick={handleMainChange}>↗</button>
-  </div>
-</div>
-
+              <div className="arrow-btn1">
+                <button onClick={handleMainChange}>↗</button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ✅ POPUP MODAL */}
-     {/* ✅ POPUP MODAL */}
-{showPopup && popupSlide && (
-  <div className="popup-overlay">
-    <div className="popup-content colorful-popup">
-      <button className="popup-close" onClick={handleClosePopup}>
-        ✕
-      </button>
+      {/* Popup */}
+      {showPopup && popupSlide && (
+        <div className="popup-overlay">
+          <div className="popup-content colorful-popup">
+            <button className="popup-close" onClick={handleClosePopup}>
+              ✕
+            </button>
+            <h2 className="fw-bold mb-3 gradient-title">
+              {popupSlide.stepTitle}
+            </h2>
+            <p className="popup-desc">{popupSlide.topText}</p>
+            <h4 className="popup-price">{popupSlide.price}</h4>
 
-      {/* Header */}
-      <h2 className="fw-bold mb-3 gradient-title">{popupSlide.stepTitle}</h2>
-      <p className="popup-desc">{popupSlide.topText}</p>
-      <h4 className="popup-price">{popupSlide.price}</h4>
+            <div className="popup-gallery">
+              {popupSlide.bottomImages.map((img, i) => (
+                <img key={i} src={img} alt="" className="popup-img" />
+              ))}
+            </div>
 
-      {/* Gallery */}
-      <div className="popup-gallery">
-        {popupSlide.bottomImages.map((img, i) => (
-          <img key={i} src={img} alt="" className="popup-img" />
-        ))}
-      </div>
-
-      {/* Actions */}
-      <div className="popup-actions">
-        <button className="btn btn-primary stylish-btn">✨ Book Now</button>
-        <a href="tel:+919380334317" className="btn stylish-outline">
-          📞 Call
-        </a>
-        <a href="mailto:vinodjayasudha@gmail.com" className="btn stylish-outline">
-          ✉ Mail
-        </a>
-        <div className="social-icons">
-          <a href="https://www.instagram.com/ajithkumar_sanjeev/" className="social-link">🌐</a>
-          <a href="https://www.facebook.com/profile.php?id=100007252275497" className="social-link">📘</a>
-          <a href="#" className="social-link">📸</a>
+            <div className="popup-actions">
+              <button className="btn btn-primary stylish-btn">
+                ✨ Get Quote
+              </button>
+              <a href="tel:+919380334317" className="btn stylish-outline">
+                📞 Call
+              </a>
+              <a
+                href="mailto:vinodjayasudha@gmail.com"
+                className="btn stylish-outline"
+              >
+                ✉ Mail
+              </a>
+              <div className="social-icons">
+                <a
+                  href="https://www.instagram.com/ajithkumar_sanjeev/"
+                  className="social-link"
+                >
+                  🌐
+                </a>
+                <a
+                  href="https://www.facebook.com/profile.php?id=100007252275497"
+                  className="social-link"
+                >
+                  📘
+                </a>
+                <a href="#" className="social-link">
+                  🏗
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-)}
-
+      )}
     </>
   );
 }

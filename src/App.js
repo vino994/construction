@@ -3,19 +3,19 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Minimalist from "./components/Minimalist";
 import Timeless from "./components/Timeless";
-import "./App.css";
 import Gallery from "./components/Gallery";
 import Footer from "./components/Footer";
+import "./App.css";
 
 function App() {
   return (
     <div>
       <Navbar />
-      <Hero />
-      <Minimalist />
-      <Timeless />
-      <Gallery />
-      <Footer />
+      <section id="hero"><Hero /></section>
+      <section id="product"><Minimalist /></section>
+      <section id="lifestyle"><Timeless /></section>
+      <section id="news"><Gallery /></section>
+      <section id="projects"><Footer /></section>
     </div>
   );
 }
