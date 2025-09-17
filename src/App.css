@@ -142,6 +142,42 @@ html {
   transform: translateX(5px);
 }
 
+/* Contact details inside Hero */
+.contact-details {
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
+
+.contact-details p {
+  margin: 6px 0;
+}
+
+.contact-details a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  color: #ff6a00;
+}
+
+/* Social Icons inside Hero */
+.hero-social-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.hero-social-icons .social-link {
+  font-size: 1.5rem;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.hero-social-icons .social-link:hover {
+  color: #ff6a00;
+  transform: scale(1.2) rotate(8deg);
+}
+
 
 
 
@@ -827,27 +863,17 @@ html {
   top: 0; left: 0;
   width: 100%; height: 100%;
   background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  z-index: 2000;  /* 🔥 raised above navbar */
   animation: fadeSlide 0.5s ease;
 }
 
 /* Popup Box */
 /* Popup Overlay */
-.popup-overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(6px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-  animation: fadeSlide 0.5s ease;
-}
+
 
 /* Popup Box with glass + gradient */
 .popup-content {
@@ -864,6 +890,7 @@ html {
   -webkit-backdrop-filter: blur(12px);
   border: 2px solid rgba(255,255,255,0.4);
   animation: popupScale 0.4s ease;
+  z-index: 2001; /* 🔥 ensure above navbar */
 }
 
 /* Popup Entrance Animation */
@@ -878,16 +905,17 @@ html {
   top: 15px;
   right: 15px;
   border: none;
-  background: rgba(255,255,255,0.9);
+  background: #ff6a00;
   border-radius: 50%;
   padding: 8px 12px;
   cursor: pointer;
   font-size: 1.2rem;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
+  z-index: 2100; /* 🔥 always visible */
 }
 .popup-close:hover {
-  background: #ff4d6d;
+  background: #ee0979;
   color: #fff;
 }
 

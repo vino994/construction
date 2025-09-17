@@ -2,36 +2,44 @@ import React, { useState, useEffect } from "react";
 import "../App.css";
 import { FaBars, FaTimes, FaCouch } from "react-icons/fa";
 
-function Navbar() {
+function Navbar({ setPopupOpenProp }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [darkText, setDarkText] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  // Scroll effect for glassmorphism
+  // Glass effect on scroll
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setScrolled(true);
-        setDarkText(true); // dark text when scrolled
+        setDarkText(true);
       } else {
         setScrolled(false);
-        setDarkText(false); // light text on hero background
+        setDarkText(false);
       }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Smooth scroll
+  const handleScroll = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    setIsOpen(false);
+  };
 
-const handleScroll = (id) => {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-  setIsOpen(false); // close mobile menu after click
-};
+  // 🚀 Contact → open footer popup
+  const handleContactClick = () => {
+    setIsOpen(false);
+    handleScroll("contact"); // scroll to footer
+    if (setPopupOpenProp) setPopupOpenProp(true); // open popup
+  };
+
   return (
     <nav
       className={`navbar sticky-top ${scrolled ? "scrolled" : ""} ${
@@ -48,12 +56,14 @@ const handleScroll = (id) => {
         </a>
 
         {/* Desktop Menu */}
-      <ul className="nav-links d-none d-lg-flex">
-  <li><button onClick={() => handleScroll("product")}>Product</button></li>
-  <li><button onClick={() => handleScroll("lifestyle")}>Lifestyle</button></li>
-  <li><button onClick={() => handleScroll("news")}>News</button></li>
-  <li><button onClick={() => handleScroll("projects")}>Projects</button></li>
-</ul>
+        <ul className="nav-links d-none d-lg-flex">
+          <li><button onClick={() => handleScroll("hero")}>Home</button></li>
+          <li><button onClick={() => handleScroll("product")}>Projects</button></li>
+          <li><button onClick={() => handleScroll("lifestyle")}>Explore</button></li>
+          <li><button onClick={() => handleScroll("news")}>Gallery</button></li>
+        
+          <li><button onClick={handleContactClick}>Contact</button></li>
+        </ul>
 
         {/* Mobile Toggler */}
         <button className="nav-toggle d-lg-none" onClick={toggleMenu}>
@@ -61,13 +71,15 @@ const handleScroll = (id) => {
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <div className={`mobile-menu ${isOpen ? "open" : ""}`}>
         <ul>
-          <li><a href="#product" onClick={toggleMenu}>Product</a></li>
-          <li><a href="#lifestyle" onClick={toggleMenu}>Lifestyle</a></li>
-          <li><a href="#news" onClick={toggleMenu}>News</a></li>
-          <li><a href="#projects" onClick={toggleMenu}>Projects</a></li>
+          <li><a href="#hero" onClick={toggleMenu}>Home</a></li>
+          <li><a href="#product" onClick={toggleMenu}>Projects</a></li>
+          <li><a href="#lifestyle" onClick={toggleMenu}>Explore</a></li>
+          <li><a href="#news" onClick={toggleMenu}>Gallery</a></li>
+         
+          <li><button onClick={handleContactClick} className="btn-link">Contact</button></li>
         </ul>
       </div>
     </nav>

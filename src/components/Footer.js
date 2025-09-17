@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
-import emailjs from "emailjs-com"; // ✅ FIX: Import EmailJS
+import emailjs from "emailjs-com";
 import "../App.css";
 
-function Footer() {
+function Footer({ setPopupOpenProp }) {
   // ✅ About Data
   const aboutData = {
     "Our Journey": {
@@ -61,7 +61,7 @@ function Footer() {
   const [popupOpen, setPopupOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [selectedKey, setSelectedKey] = useState(null);
-  const [popupType, setPopupType] = useState(null); // "about" | "service"
+  const [popupType, setPopupType] = useState(null);
 
   // ✅ Contact Form State
   const [showForm, setShowForm] = useState(false);
@@ -77,6 +77,9 @@ function Footer() {
     setSelectedItem(type === "about" ? aboutData[key] : services[key]);
     setPopupOpen(true);
     setShowForm(false);
+
+    // Inform App to hide navbar
+    if (setPopupOpenProp) setPopupOpenProp(true);
   };
 
   const closePopup = () => {
@@ -85,6 +88,9 @@ function Footer() {
     setSelectedKey(null);
     setPopupType(null);
     setShowForm(false);
+
+    // Inform App to show navbar back
+    if (setPopupOpenProp) setPopupOpenProp(false);
   };
 
   const handleInputChange = (e) => {
@@ -98,15 +104,15 @@ function Footer() {
 
     emailjs
       .send(
-        "service_lilibt4",   // 🔥 Replace with your EmailJS Service ID
-        "template_n1cxwq8",  // 🔥 Replace with your EmailJS Template ID
+        "service_lilibt4",   // ✅ Replace with your EmailJS Service ID
+        "template_n1cxwq8",  // ✅ Replace with your EmailJS Template ID
         {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
           subject: `${popupType === "about" ? "Enquiry" : "Estimate Request"} - ${selectedKey}`,
         },
-        "-ofppnO1dVjdcg5jI" // 🔥 Replace with your EmailJS Public Key
+        "-ofppnO1dVjdcg5jI" // ✅ Replace with your EmailJS Public Key
       )
       .then(
         () => {
@@ -115,7 +121,6 @@ function Footer() {
           setShowForm(false);
           setSuccessPopup(true);
 
-          // Hide after 2.5s
           setTimeout(() => {
             setSuccessPopup(false);
             closePopup();
